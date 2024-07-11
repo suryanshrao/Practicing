@@ -25,6 +25,8 @@ function CountRenderer() {
   const count = useRecoilValue(countAtom);
   return <div>
     {count}
+    {count % 2 === 0 && <div> <br /> It is Even</div>}
+    {count % 2 === 1 && <div> <br /> It is Odd</div>}
     </div>;
 }
 
