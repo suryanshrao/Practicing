@@ -24,10 +24,18 @@ function Count() {
 function CountRenderer() {
   const count = useRecoilValue(countAtom);
   return <div>
+    <b>
     {count}
-    {count % 2 === 0 && <div> <br /> It is Even</div>}
-    {count % 2 === 1 && <div> <br /> It is Odd</div>}
+    </b>
+    <EvenCountOrOdd/>
     </div>;
+}
+
+function EvenCountOrOdd(){
+  const count = useRecoilValue(countAtom);
+  return <div>
+     {(count % 2 === 0) ? "!! It is even !!" : "!! It is odd !!"}
+  </div>
 }
 
 function Buttons() {
