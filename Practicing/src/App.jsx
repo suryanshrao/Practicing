@@ -1,6 +1,6 @@
 import React from "react";
 import {RecoilRoot ,useSetRecoilState, useRecoilValue } from "recoil";
-import { countAtom } from "./store/atom/count";
+import { countAtom, selectorEvenOdd } from "./store/atom/count";
 
 function App() {
   return (
@@ -32,10 +32,20 @@ function CountRenderer() {
 }
 
 function EvenCountOrOdd(){
-  const count = useRecoilValue(countAtom);
+
+  // UGLY WAY OF SOLVING THE PROBLEM
+
+  // const count = useRecoilValue(countAtom);
+  // return <div>
+  //    {(count % 2 === 0) ? "!! It is even !!" : "!! It is odd !!"}
+  // </div>
+
+  const isEven = useRecoilValue(selectorEvenOdd);
+
   return <div>
-     {(count % 2 === 0) ? "!! It is even !!" : "!! It is odd !!"}
+    {!isEven? "!! It is Even !!" : "!! It is Odd  !!" }
   </div>
+
 }
 
 function Buttons() {
